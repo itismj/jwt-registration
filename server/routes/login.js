@@ -21,12 +21,9 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    res.status(200).json({
-      message: "Signin successful",
-    });
-
     const token = jwtGenerator(user.rows[0].user_id);
-    console.log(token);
+
+    res.json({ token });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");

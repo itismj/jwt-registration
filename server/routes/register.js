@@ -21,7 +21,6 @@ const registerUser = async (req, res) => {
       "INSERT INTO users (user_name, email, password) VALUES($1, $2, $3) RETURNING *",
       [user_name, email, encryptedPassword]
     );
-    console.log(newUser.rows[0]);
 
     const token = jwtGenerator(newUser.rows[0].user_id);
 

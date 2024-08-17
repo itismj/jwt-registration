@@ -10,4 +10,6 @@ app.use(express.json());
 // Routes
 app.use("/auth", require("./routes/jwtAuth"));
 
+app.use("/dashboard", require("./routes/dashboard"));
+
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
