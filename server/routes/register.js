@@ -6,11 +6,12 @@ const jwtGenerator = require("../utils/jwtGenerator");
 const registerUser = async (req, res) => {
   try {
     const { user_name, email, password } = req.body;
+
     const user = await pool.query("SELECT * FROM users WHERE email = $1", [
       email,
     ]);
     if (user.rows.length) {
-      return res.status(401).send("User already exists!");
+      return res.status(401).json("User already exists!");
     }
 
     const saltRound = 10;
